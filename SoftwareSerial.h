@@ -35,6 +35,7 @@ http://arduiniana.org.
 #include <inttypes.h>
 #include <Stream.h>
 
+
 /******************************************************************************
 * Definitions
 ******************************************************************************/
@@ -78,6 +79,8 @@ private:
   // private static method for timing
   static inline void tunedDelay(uint16_t delay);
 
+  virtual size_t writeln(void);
+
 public:
   // public methods
   SoftwareSerial(uint8_t receivePin, uint8_t transmitPin, bool inverse_logic = false);
@@ -90,6 +93,10 @@ public:
   int peek();
 
   virtual size_t write(uint8_t byte);
+  virtual size_t write_P(const __FlashStringHelper *ifsh);
+  virtual size_t writeln(uint8_t b);
+  virtual size_t writeln_P(const __FlashStringHelper *ifsh);
+
   virtual int read();
   virtual int available();
   virtual void flush();
