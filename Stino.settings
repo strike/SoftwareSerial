@@ -8,7 +8,7 @@
     "pre_setting_folder_path": "/usr/share/arduino/libraries/SoftwareSerial", 
     "programmer": "AVR ISP", 
     "serial_port": "", 
-    "show_arduino_menu": true, 
+    "show_arduino_menu": false, 
     "show_serial_monitor_menu": "", 
     "sketchbook_root": "/home/strike/sketchbook", 
     "verbose_upload": true

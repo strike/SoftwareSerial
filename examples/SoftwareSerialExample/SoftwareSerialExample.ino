@@ -26,6 +26,7 @@
  
  */
 #include <SoftwareSerial.h>
+#include <avr/pgmspace.h>
 
 SoftwareSerial mySerial(10, 11); // RX, TX
 
@@ -38,11 +39,13 @@ void setup()
   }
 
 
-  Serial.println("Goodnight moon!");
+  Serial.println(F("Goodnight moon!"));
 
   // set the data rate for the SoftwareSerial port
   mySerial.begin(4800);
-  mySerial.println("Hello, world?");
+
+  // print flash string
+  mySerial.writeln_P(F("Hello, world?"));
 }
 
 void loop() // run over and over

@@ -35,6 +35,7 @@
  */
 
 #include <SoftwareSerial.h>
+#include <avr/pgmspace.h>
 // software serial #1: TX = digital pin 10, RX = digital pin 11
 SoftwareSerial portOne(10,11);
 
@@ -61,7 +62,7 @@ void loop()
   // By default, the last intialized port is listening.
   // when you want to listen on a port, explicitly select it:
   portOne.listen();
-  Serial.println("Data from port one:");
+  Serial.println(F("Data from port one:"));
   // while there is data coming in, read it
   // and send to the hardware serial port:
   while (portOne.available() > 0) {
@@ -76,7 +77,7 @@ void loop()
   portTwo.listen();
   // while there is data coming in, read it
   // and send to the hardware serial port:
-  Serial.println("Data from port two:");
+  Serial.println(F("Data from port two:"));
   while (portTwo.available() > 0) {
     char inByte = portTwo.read();
     Serial.write(inByte);
