@@ -301,18 +301,20 @@ inline void SoftwareSerial::handle_interrupt()
   }
 }
 
-#if defined(PCINT0_vect)
-ISR(PCINT0_vect)
-{
-  SoftwareSerial::handle_interrupt();
-}
-#endif
+#if !defined(NO_PORTD_PINCHANGES)
+  #if defined(PCINT0_vect)
+  ISR(PCINT0_vect)
+  {
+    SoftwareSerial::handle_interrupt();
+  }
+  #endif
 
-#if defined(PCINT1_vect)
-ISR(PCINT1_vect)
-{
-  SoftwareSerial::handle_interrupt();
-}
+  #if defined(PCINT1_vect)
+  ISR(PCINT1_vect)
+  {
+    SoftwareSerial::handle_interrupt();
+  }
+  #endif
 #endif
 
 #if defined(PCINT2_vect)
@@ -322,12 +324,15 @@ ISR(PCINT2_vect)
 }
 #endif
 
-#if defined(PCINT3_vect)
-ISR(PCINT3_vect)
-{
-  SoftwareSerial::handle_interrupt();
-}
+#if !defined(NO_PORTD_PINCHANGES)
+  #if defined(PCINT3_vect)
+  ISR(PCINT3_vect)
+  {
+    SoftwareSerial::handle_interrupt();
+  }
+  #endif
 #endif
+
 
 //
 // Constructor
