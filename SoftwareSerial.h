@@ -92,10 +92,13 @@ public:
   bool overflow() { bool ret = _buffer_overflow; _buffer_overflow = false; return ret; }
   int peek();
 
-  virtual size_t write(uint8_t byte);
+  inline virtual size_t write(const __FlashStringHelper *ifsh) {return write(ifsh);};
   virtual size_t write_P(const __FlashStringHelper *ifsh);
-  virtual size_t writeln(uint8_t b);
+  virtual size_t write(uint8_t byte);
+
+  inline virtual size_t writeln(const __FlashStringHelper *ifsh) {return write(ifsh);};
   virtual size_t writeln_P(const __FlashStringHelper *ifsh);
+  virtual size_t writeln(uint8_t b);
 
   virtual int read();
   virtual int available();

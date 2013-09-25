@@ -2,7 +2,7 @@ SoftwareSerial
 ==============
 
 SoftwareSerial -- library for arduino. 
-In this modification you can use flash (programm) memory for print (with fucntion: write_P, writeln_P)
+In this modification you can use flash (programm) memory for print. You can you _P function (write_P, writeln_P) or usual function (write, writeln). 
 
 USEGE
 ------
@@ -17,6 +17,8 @@ void someFunction(){
   mySerial.begin(4800);
   ...
   // print flash string
+  mySerial.writeln(F("Hello, world?"));
+  // or 
   mySerial.writeln_P(F("Hello, world?"));
   ...
 

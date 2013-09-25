@@ -448,6 +448,19 @@ int SoftwareSerial::available()
   return (_receive_buffer_tail + _SS_MAX_RX_BUFF - _receive_buffer_head) % _SS_MAX_RX_BUFF;
 }
 
+size_t SoftwareSerial::write_P(const __FlashStringHelper *ifsh)
+{
+  const char PROGMEM *p = (const char PROGMEM *)ifsh;
+  size_t n = 0;
+  while (1) 
+  {
+    uint8_t c = pgm_read_byte(p++);
+    if (c == 0) break;
+    n += write(c);
+  }
+  return n;
+}
+
 size_t SoftwareSerial::write(uint8_t b)
 {
   if (_tx_delay == 0) {
@@ -498,29 +511,16 @@ size_t SoftwareSerial::write(uint8_t b)
   return 1;
 }
 
-size_t SoftwareSerial::write_P(const __FlashStringHelper *ifsh)
+size_t SoftwareSerial::writeln_P(const __FlashStringHelper *ifsh)
 {
-  const char PROGMEM *p = (const char PROGMEM *)ifsh;
-  size_t n = 0;
-  while (1) 
-  {
-    uint8_t c = pgm_read_byte(p++);
-    if (c == 0) break;
-    n += write(c);
-  }
+  size_t n = print(ifsh);
+  n += println();
   return n;
 }
 
 size_t SoftwareSerial::writeln(uint8_t b)
 {
   size_t n = print(b);
-  n += println();
-  return n;
-}
-
-size_t SoftwareSerial::writeln_P(const __FlashStringHelper *ifsh)
-{
-  size_t n = print(ifsh);
   n += println();
   return n;
 }
