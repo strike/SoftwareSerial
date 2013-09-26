@@ -4,7 +4,7 @@ SoftwareSerial
 SoftwareSerial -- library for arduino. 
 In this modification you can use flash (programm) memory for print. You can you _P function (write_P, writeln_P) or usual function (write, writeln). 
 
-USEGE
+USAGE
 ------
 
 ```cpp
@@ -25,3 +25,7 @@ void someFunction(){
 }
 
 ```
+
+TODO
+------
+Do support PinChangeInt library. Now you need delete some part of code (unfortunately, #define isn't work). I think that it's evil, but I haven't a time.
