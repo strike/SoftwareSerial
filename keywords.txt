@@ -21,6 +21,11 @@ overflow	KEYWORD2
 flush	KEYWORD2
 listen	KEYWORD2
 
+write	KEYWORD2
+write_P	KEYWORD2
+writeln	KEYWORD2
+writeln_P	KEYWORD2
+
 #######################################
 # Constants (LITERAL1)
 #######################################
